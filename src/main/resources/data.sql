@@ -1,15 +1,15 @@
-INSERT INTO UNIVERSITY (ID, ADDRESS, NAME) values (1,'пл. Независимости 4','БГУ');
-INSERT INTO UNIVERSITY (ID, ADDRESS, NAME) values (2,'пл. Независимости 60','БГУИР');
+INSERT INTO UNIVERSITY (ID, ADDRESS, NAME) values (1,'СѓР». РќРµР·Р°РІРёСЃРёРјРѕСЃС‚Рё 4','Р‘Р“РЈ');
+INSERT INTO UNIVERSITY (ID, ADDRESS, NAME) values (2,'СѓР». РќРµР·Р°РІРёСЃРёРјРѕСЃС‚Рё 60','Р‘Р“РЈРР ');
 
 INSERT INTO ROOM (ID, CAPACITY, NUMBER, UNIVERSITY_ID) values (1,100,'605',1);
-INSERT INTO ROOM (ID, CAPACITY, NUMBER, UNIVERSITY_ID) values (2,60,'312a',1);
+INSERT INTO ROOM (ID, CAPACITY, NUMBER, UNIVERSITY_ID) values (2,60,'312Р°',1);
 INSERT INTO ROOM (ID, CAPACITY, NUMBER, UNIVERSITY_ID) values (3,19,'605',2);
-INSERT INTO ROOM (ID, CAPACITY, NUMBER, UNIVERSITY_ID) values (4,75,'312a',2);
+INSERT INTO ROOM (ID, CAPACITY, NUMBER, UNIVERSITY_ID) values (4,75,'312Р°',2);
 
-INSERT INTO SUBJECT (ID, CODE, NAME) values (1,'001','Русский язык');
-INSERT INTO SUBJECT (ID, CODE, NAME) values (2,'002','Математика');
-INSERT INTO SUBJECT (ID, CODE, NAME) values (3,'003','Физика');
-INSERT INTO SUBJECT (ID, CODE, NAME) values (4,'004','Английский язык');
+INSERT INTO SUBJECT (ID, CODE, NAME) values (1,'001','Р СѓСЃСЃРєРёР№ СЏР·С‹Рє');
+INSERT INTO SUBJECT (ID, CODE, NAME) values (2,'002','РњР°С‚РµРјР°С‚РёРєР°');
+INSERT INTO SUBJECT (ID, CODE, NAME) values (3,'003','Р¤РёР·РёРєР°');
+INSERT INTO SUBJECT (ID, CODE, NAME) values (4,'004','РђРЅРіР»РёР№СЃРєРёР№ СЏР·С‹Рє');
 
 INSERT INTO AVAILABLE_SUBJECT (SUBJECT_ID, UNIVERSITY_ID) values (1,1);
 INSERT INTO AVAILABLE_SUBJECT (SUBJECT_ID, UNIVERSITY_ID) values (1,2);
@@ -18,8 +18,8 @@ INSERT INTO AVAILABLE_SUBJECT (SUBJECT_ID, UNIVERSITY_ID) values (2,1);
 INSERT INTO AVAILABLE_SUBJECT (SUBJECT_ID, UNIVERSITY_ID) values (2,2);
 INSERT INTO AVAILABLE_SUBJECT (SUBJECT_ID, UNIVERSITY_ID) values (2,4);
 
-INSERT INTO USERS (ID, EMAIL, FIRST_NAME, LAST_NAME, MIDDLE_NAME, PASSWORD) values (1, 'mega-methodist@gmail.com', 'Иван', 'Иванов', 'Иванович', '123456');
+INSERT INTO USERS (ID, EMAIL, FIRST_NAME, LAST_NAME, MIDDLE_NAME, PASSWORD) values (1, 'mega-methodist@gmail.com', 'РњСЌСЂРё', 'РџС€РіР»Р°РІСЃРєСЏ', 'Р‘СЂР°С…РјР°РЅРѕРІРёС‡', '123456');
 INSERT INTO METHODIST (ID, UNIVERSITY_ID) values (1, 1);
 
-INSERT INTO USERS (ID, EMAIL, FIRST_NAME, LAST_NAME, MIDDLE_NAME, PASSWORD) values (2, 'mega-enrollee@gmail.com', 'Дэвид', 'Копперфильд', 'Иванович', '123456');
+INSERT INTO USERS (ID, EMAIL, FIRST_NAME, LAST_NAME, MIDDLE_NAME, PASSWORD) values (2, 'mega-enrollee@gmail.com', 'Р”СЌРІРёРґ', 'Р‘СЂРіР»Р±РґР¶Р°РІСЃРєРёР№', 'РСЃРµРЅРµРµРІРёС‡', '123456');
 INSERT INTO ENROLLEE (ID, PASSPORT_ID, PHONE_NUMBER) values (2, '320112001A000PB0', '+375291234567');
