@@ -9,5 +9,5 @@ import by.bsu.rikz.entity.Document;
 
 public interface DocumentRepository extends JpaRepository<Document, Long> {
 
-	List<Document> findByEnrolleeId(@Param("id") Long id);
+	List<Document> findByEnrolleeId(@Param("enrolleeId") Long enrolleeId);
 }
