@@ -35,6 +35,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.boot:spring-boot-starter-validation')
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.data:spring-data-rest-hal-browser')
 	
 	runtime('com.h2database:h2')
 	runtime('mysql:mysql-connector-java')
