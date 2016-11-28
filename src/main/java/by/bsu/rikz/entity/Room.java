@@ -16,7 +16,7 @@ public class Room extends AbstractEntity {
 
 	private Integer capacity;
 
-	private Integer number;
+	private String number;
 
 	@ManyToOne
 	private University university;
