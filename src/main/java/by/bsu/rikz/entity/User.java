@@ -19,15 +19,16 @@ import lombok.Setter;
 public abstract class User extends AbstractEntity {
 
 	@Email
+	@Column(unique = true, nullable = false)
 	private String email;
 
-	@Column(name = "first_name")
+	@Column(name = "first_name", nullable = false)
 	private String firstName;
 
-	@Column(name = "last_name")
+	@Column(name = "last_name", nullable = false)
 	private String lastName;
 
-	@Column(name = "middle_name", nullable = true)
+	@Column(name = "middle_name")
 	private String middleName;
 
 	private String password;
