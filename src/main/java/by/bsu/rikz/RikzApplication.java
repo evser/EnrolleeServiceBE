@@ -22,9 +22,4 @@ public class RikzApplication extends RepositoryRestMvcConfiguration {
 		return config;
 	}
 
-	// @Override
-	// protected void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
-	// config.exposeIdsFor(Document.class, Enrollee.class, Methodist.class, Room.class);
-	// }
-
 }
