@@ -31,6 +31,7 @@ public abstract class User extends AbstractEntity {
 	@Column(name = "middle_name")
 	private String middleName;
 
+	@Column(length = 512)
 	private String password;
 
 }

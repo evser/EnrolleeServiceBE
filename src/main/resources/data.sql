@@ -18,8 +18,9 @@ INSERT INTO AVAILABLE_SUBJECT (SUBJECT_ID, UNIVERSITY_ID) values (2,1);
 INSERT INTO AVAILABLE_SUBJECT (SUBJECT_ID, UNIVERSITY_ID) values (2,2);
 INSERT INTO AVAILABLE_SUBJECT (SUBJECT_ID, UNIVERSITY_ID) values (2,4);
 
-INSERT INTO USERS (ID, EMAIL, FIRST_NAME, LAST_NAME, MIDDLE_NAME, PASSWORD) values (1, 'mega-methodist@gmail.com', 'Мэри', 'Пшглавскя', 'Брахманович', '123456');
+--password=123456
+INSERT INTO USERS (ID, EMAIL, FIRST_NAME, LAST_NAME, MIDDLE_NAME, PASSWORD) values (1, 'mega-methodist@gmail.com', 'Мэри', 'Пшглавскя', 'Брахманович', '$2a$06$ZmJOYeS96R26lH4ACNIa2OihhaqborMuqZqQ17ESuxDa7l0XKhGHm');
 INSERT INTO METHODIST (ID, UNIVERSITY_ID) values (1, 1);
 
-INSERT INTO USERS (ID, EMAIL, FIRST_NAME, LAST_NAME, MIDDLE_NAME, PASSWORD) values (2, 'mega-enrollee@gmail.com', 'Дэвид', 'Брглбджавский', 'Исенеевич', '123456');
+INSERT INTO USERS (ID, EMAIL, FIRST_NAME, LAST_NAME, MIDDLE_NAME, PASSWORD) values (2, 'mega-enrollee@gmail.com', 'Дэвид', 'Брглбджавский', 'Исенеевич', '$2a$06$ZmJOYeS96R26lH4ACNIa2OihhaqborMuqZqQ17ESuxDa7l0XKhGHm');
 INSERT INTO ENROLLEE (ID, PASSPORT_ID, PHONE_NUMBER) values (2, '320112001A000PB0', '+375291234567');

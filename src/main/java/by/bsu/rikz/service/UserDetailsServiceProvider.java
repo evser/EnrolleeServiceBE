@@ -1,14 +1,24 @@
 package by.bsu.rikz.service;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
+import by.bsu.rikz.entity.User;
+import by.bsu.rikz.entity.enums.UserRoleEnum;
 import by.bsu.rikz.repository.EnrolleeRepository;
 import by.bsu.rikz.repository.MethodistRepository;
 
+@Service
 public class UserDetailsServiceProvider implements UserDetailsService {
 
 	@Autowired
@@ -20,22 +30,19 @@ public class UserDetailsServiceProvider implements UserDetailsService {
 	@Override
 	@Transactional(readOnly = true)
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		// Assert.notNull(username, "username can't be null");
-		// Optional<Enrollee> enrolleeOprional = enrolleeRepository.findByEmail(username);
-		// UserRoleEnum roleEnum;
-		// if (enrolleeOprional.isPresent()) {
-		// roleEnum = UserRoleEnum.ENROLEE;
-		// } else {
-		// roleEnum = UserRoleEnum.METHODIST;
-		// methodistRepository.findByEmail(username);
-		// }
-		// // TODO check if user not null
-		// List<SimpleGrantedAuthority> authorities = user.getUserRoles().stream()
-		// .map(userRole -> new SimpleGrantedAuthority(userRole.getRole()))
-		// .collect(Collectors.toList());
-		// return new User(user.getLogin(), user.getPassword(),
-		// user.isEnabled(), true, true, true, authorities);
-		return null;
+		Assert.notNull(username, "username can't be null");
+		Optional<? extends User> userOptional = enrolleeRepository.findByEmail(username);
+		UserRoleEnum roleEnum;
+		if (userOptional.isPresent()) {
+			roleEnum = UserRoleEnum.ENROLEE;
+		} else {
+			userOptional = methodistRepository.findByEmail(username);
+			roleEnum = UserRoleEnum.METHODIST;
+		}
+
+		User user = userOptional.orElseThrow(() -> new UsernameNotFoundException("User ith a such login doesn't exist: " + username));
+		List<SimpleGrantedAuthority> authorities = Arrays.asList(new SimpleGrantedAuthority(roleEnum.name()));
+		return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
 	}
 
 }

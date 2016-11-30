@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -17,7 +18,7 @@ public class LoginController {
 	@Autowired
 	private LoginService loginService;
 
-	@RequestMapping("/login")
+	@GetMapping("/login")
 	public String login(@RequestParam(name = "success", required = false) String success, @RequestParam(name = "mobile", required = false) String mobile, Authentication auth,
 			HttpSession session) {
 		if (auth == null && mobile == null) {
