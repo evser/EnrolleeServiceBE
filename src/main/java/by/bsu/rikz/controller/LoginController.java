@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import by.bsu.rikz.service.LoginService;
 
@@ -25,5 +26,12 @@ public class LoginController {
 		}
 		loginService.loginHandler(auth, session);
 		return "redirect:/";
+	}
+
+	@ResponseBody
+	@GetMapping("/my-email")
+	public String login(Authentication auth) {
+		System.out.println("My-email for: " + auth);
+		return auth != null ? auth.getName() : "null";
 	}
 }

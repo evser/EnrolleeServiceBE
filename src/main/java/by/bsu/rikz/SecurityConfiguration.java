@@ -17,9 +17,11 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
@@ -52,8 +54,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 							System.out.println(headerNameEnum.nextElement());
 						// System.out.println("!!" + request.getHeader("user-agent"));
 						String header = request.getHeader("user-agent");
+						System.out.println("User-agent header: " + header);
 						response.addHeader("my-result", Objects.toString(header, "No user-agent"));
 						response.setStatus(HttpServletResponse.SC_OK);
+					}
+				})
+				.failureHandler(new AuthenticationFailureHandler() {
+
+					@Override
+					public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception)
+							throws IOException, ServletException {
+						response.sendError(HttpServletResponse.SC_FORBIDDEN);
 					}
 				})
 				.and().rememberMe()
