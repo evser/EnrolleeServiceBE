@@ -19,9 +19,8 @@ public class LoginController {
 	private LoginService loginService;
 
 	@GetMapping("/login")
-	public String login(@RequestParam(name = "success", required = false) String success, @RequestParam(name = "mobile", required = false) String mobile, Authentication auth,
-			HttpSession session) {
-		if (auth == null && mobile == null) {
+	public String login(@RequestParam(name = "success", required = false) String success, Authentication auth, HttpSession session) {
+		if (auth == null) {
 			return "forward:/login-form.html";
 		}
 		loginService.loginHandler(auth, session);

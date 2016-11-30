@@ -1,6 +1,7 @@
 package by.bsu.rikz;
 
 import java.io.IOException;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -40,13 +41,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.and().csrf().disable()
 				.headers().frameOptions().disable()
 				// .and().authorizeRequests().antMatchers("/**").authenticated()
-				.and().formLogin().loginPage("/login").usernameParameter("login").successHandler(new SimpleUrlAuthenticationSuccessHandler() {
+				.and().formLogin().loginPage("/login").usernameParameter("login")
+				.successHandler(new SimpleUrlAuthenticationSuccessHandler() {
 
 					@Override
 					public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
 							throws IOException, ServletException {
-						// This is actually not an error, but an OK message. It is sent to avoid redirects.
-						response.sendError(HttpServletResponse.SC_OK);
+						for (Enumeration<String> headerNameEnum = request.getHeaderNames(); headerNameEnum.hasMoreElements();)
+							System.out.println(headerNameEnum.nextElement());
+						// System.out.println("!!" + request.getHeader("user-agent"));
+						response.addHeader("my-result", request.getHeader("user-agent"));
+						response.setStatus(HttpServletResponse.SC_OK);
 					}
 				})
 				.and().rememberMe()
@@ -57,4 +62,5 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
+
 }
