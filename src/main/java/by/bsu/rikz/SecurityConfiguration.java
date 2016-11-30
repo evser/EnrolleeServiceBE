@@ -2,7 +2,6 @@ package by.bsu.rikz;
 
 import java.io.IOException;
 import java.util.Enumeration;
-import java.util.Objects;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -40,7 +39,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.authorizeRequests()
 				// .antMatchers("/h2-console/**", "/", "/login").permitAll()
-				.antMatchers("/**").permitAll()
+				.anyRequest().permitAll()
 				.and().csrf().disable()
 				.headers().frameOptions().disable()
 				// .and().authorizeRequests().antMatchers("/**").authenticated()
@@ -52,11 +51,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 							throws IOException, ServletException {
 						for (Enumeration<String> headerNameEnum = request.getHeaderNames(); headerNameEnum.hasMoreElements();)
 							System.out.println(headerNameEnum.nextElement());
-						// System.out.println("!!" + request.getHeader("user-agent"));
 						String header = request.getHeader("user-agent");
-						System.out.println("User-agent header: " + header);
-						response.addHeader("my-result", Objects.toString(header, "No user-agent"));
-						response.setStatus(HttpServletResponse.SC_OK);
+						if (header.contains("Android")) {
+							response.setStatus(HttpServletResponse.SC_OK);
+						}
 					}
 				})
 				.failureHandler(new AuthenticationFailureHandler() {
