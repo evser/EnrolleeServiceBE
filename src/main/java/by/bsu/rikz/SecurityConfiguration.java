@@ -2,6 +2,7 @@ package by.bsu.rikz;
 
 import java.io.IOException;
 import java.util.Enumeration;
+import java.util.Objects;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -50,7 +51,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 						for (Enumeration<String> headerNameEnum = request.getHeaderNames(); headerNameEnum.hasMoreElements();)
 							System.out.println(headerNameEnum.nextElement());
 						// System.out.println("!!" + request.getHeader("user-agent"));
-						response.addHeader("my-result", request.getHeader("user-agent"));
+						String header = request.getHeader("user-agent");
+						response.addHeader("my-result", Objects.toString(header, "No user-agent"));
 						response.setStatus(HttpServletResponse.SC_OK);
 					}
 				})
