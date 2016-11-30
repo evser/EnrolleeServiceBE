@@ -40,7 +40,7 @@ public class UserDetailsServiceProvider implements UserDetailsService {
 			roleEnum = UserRoleEnum.METHODIST;
 		}
 
-		User user = userOptional.orElseThrow(() -> new UsernameNotFoundException("User ith a such login doesn't exist: " + username));
+		User user = userOptional.orElseThrow(() -> new UsernameNotFoundException("User with a such login doesn't exist: " + username));
 		List<SimpleGrantedAuthority> authorities = Arrays.asList(new SimpleGrantedAuthority(roleEnum.name()));
 		return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
 	}
