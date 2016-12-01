@@ -1,8 +1,6 @@
 package by.bsu.rikz;
 
 import java.io.IOException;
-import java.util.Enumeration;
-import java.util.Objects;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -13,15 +11,16 @@ import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
@@ -39,36 +38,43 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.authorizeRequests()
-				// .antMatchers("/h2-console/**", "/", "/login").permitAll()
-				.antMatchers("/**").permitAll()
-				.and().csrf().disable()
-				.headers().frameOptions().disable()
-				// .and().authorizeRequests().antMatchers("/**").authenticated()
+				.antMatchers(HttpMethod.POST, "/enrollees").denyAll()
+				.antMatchers("/login", "/signup").anonymous()
+				.antMatchers("/h2-console/**", "/").permitAll()
+				.antMatchers("/**").authenticated()
+				.and().csrf().disable().headers().frameOptions().disable()
 				.and().formLogin().loginPage("/login").usernameParameter("login")
 				.successHandler(new SimpleUrlAuthenticationSuccessHandler() {
 
 					@Override
 					public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
 							throws IOException, ServletException {
-						for (Enumeration<String> headerNameEnum = request.getHeaderNames(); headerNameEnum.hasMoreElements();)
-							System.out.println(headerNameEnum.nextElement());
-						// System.out.println("!!" + request.getHeader("user-agent"));
-						String header = request.getHeader("user-agent");
-						System.out.println("User-agent header: " + header);
-						response.addHeader("my-result", Objects.toString(header, "No user-agent"));
-						response.setStatus(HttpServletResponse.SC_OK);
+						String header = request.getHeader(HttpHeaders.USER_AGENT);
+						if (header != null && header.contains("Android")) {
+							response.setStatus(HttpServletResponse.SC_OK);
+						}
 					}
 				})
-				.failureHandler(new AuthenticationFailureHandler() {
-
-					@Override
-					public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception)
-							throws IOException, ServletException {
-						response.sendError(HttpServletResponse.SC_FORBIDDEN);
-					}
-				})
+				.failureHandler((request, response, exception) -> response.sendError(HttpServletResponse.SC_FORBIDDEN))
 				.and().rememberMe()
-				.and().logout().logoutSuccessUrl("/");
+				.and().logout().logoutSuccessHandler((request, response, authentication) -> {
+					String header = request.getHeader(HttpHeaders.USER_AGENT);
+					if (header != null && header.contains("Android")) {
+						response.setStatus(HttpServletResponse.SC_OK);
+					} else {
+						try {
+							response.sendRedirect("/");
+						} catch (IOException ex) {
+							ex.printStackTrace();
+						}
+					}
+
+				})
+				.and().exceptionHandling().authenticationEntryPoint((request, response, accessDeniedException) -> {
+					if (accessDeniedException != null) {
+						response.sendError(HttpStatus.FORBIDDEN.value(), accessDeniedException.getLocalizedMessage());
+					}
+				});
 	}
 
 	@Bean

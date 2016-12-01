@@ -8,6 +8,9 @@ import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.Email;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,6 +35,7 @@ public abstract class User extends AbstractEntity {
 	private String middleName;
 
 	@Column(length = 512)
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private String password;
 
 }
