@@ -41,7 +41,7 @@ dependencies {
 	runtime('mysql:mysql-connector-java')
 	
 	compile('org.hibernate:hibernate-java8')
-	compile('com.fasterxml.jackson.module:jackson-modules-java8:2.+')
+	compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310')
 	
 	compileOnly('org.projectlombok:lombok')
 	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
