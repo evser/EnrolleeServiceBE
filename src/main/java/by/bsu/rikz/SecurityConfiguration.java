@@ -12,7 +12,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -38,7 +37,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.authorizeRequests()
-				.antMatchers(HttpMethod.POST, "/enrollees").denyAll()
+				.antMatchers("/enrollees/**", "/methodists/**").denyAll()
 				.antMatchers("/login", "/signup").anonymous()
 				.antMatchers("/h2-console/**", "/", "/browser/**").permitAll()
 				.antMatchers("/**").authenticated()

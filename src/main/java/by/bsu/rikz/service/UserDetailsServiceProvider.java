@@ -34,7 +34,7 @@ public class UserDetailsServiceProvider implements UserDetailsService {
 		Optional<? extends User> userOptional = enrolleeRepository.findByEmail(username);
 		UserRoleEnum roleEnum;
 		if (userOptional.isPresent()) {
-			roleEnum = UserRoleEnum.ENROLEE;
+			roleEnum = UserRoleEnum.ENROLLEE;
 		} else {
 			userOptional = methodistRepository.findByEmail(username);
 			roleEnum = UserRoleEnum.METHODIST;
