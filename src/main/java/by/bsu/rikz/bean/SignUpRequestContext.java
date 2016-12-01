@@ -1,5 +1,7 @@
 package by.bsu.rikz.bean;
 
+import java.io.Serializable;
+
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
@@ -13,7 +15,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class SignUpRequestContext {
+public class SignUpRequestContext implements Serializable {
+
+	private static final long serialVersionUID = 2182028318030583190L;
 
 	@Email
 	private String email;

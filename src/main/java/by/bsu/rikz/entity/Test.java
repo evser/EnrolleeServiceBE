@@ -7,6 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+import org.springframework.data.rest.core.annotation.RestResource;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,12 +24,15 @@ public class Test extends AbstractEntity {
 	private String type;
 
 	@ManyToOne
+	@RestResource(exported = false)
 	private Room room;
 
 	@ManyToOne
+	@RestResource(exported = false)
 	private Subject subject;
 
 	@OneToMany(mappedBy = "test")
+	@LazyCollection(LazyCollectionOption.EXTRA)
 	private List<TestAssignment> testAssignments;
 
 	public TestAssignment addTestAssignment(TestAssignment testAssignment) {

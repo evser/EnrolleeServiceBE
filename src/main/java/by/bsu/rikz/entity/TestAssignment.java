@@ -5,6 +5,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.data.rest.core.annotation.RestResource;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,6 +23,7 @@ public class TestAssignment extends AbstractEntity {
 	private Enrollee enrollee;
 
 	@ManyToOne
+	@RestResource(exported = false)
 	private Test test;
 
 }
