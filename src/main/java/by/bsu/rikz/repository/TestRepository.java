@@ -11,10 +11,10 @@ import by.bsu.rikz.entity.Test;
 public interface TestRepository extends JpaRepository<Test, Long> {
 
 	@RestResource(path = "findByUniversityId")
-	List<Test> findByRoomUniversityId(@Param("univesityId") Long univesityId);
+	List<Test> findByRoomUniversityId(@Param("universityId") Long universityId);
 
 	@RestResource(path = "findByUniversityIdAndSubjectId")
-	List<Test> findByRoomUniversityIdAndSubjectId(@Param("univesityId") Long univesityId, @Param("subjectId") Long subjectId);
+	List<Test> findByRoomUniversityIdAndSubjectId(@Param("universityId") Long universityId, @Param("subjectId") Long subjectId);
 
 	@RestResource(path = "findByEnrolleeId")
 	List<Test> findByTestAssignmentsEnrolleeId(@Param("enrolleeId") Long enrolleeId);

@@ -24,8 +24,11 @@ INSERT INTO TEST (ID, DATE, TYPE, ROOM_ID, SUBJECT_ID) values (3, '2016-12-18T09
 INSERT INTO TEST (ID, DATE, TYPE, ROOM_ID, SUBJECT_ID) values (4, '2017-06-25T11:00:00', 'ЦТ', 4, 3);
 
 --password=123456
-INSERT INTO USERS (ID, EMAIL, FIRST_NAME, LAST_NAME, MIDDLE_NAME, PASSWORD) values (1, 'mega-methodist@gmail.com', 'Мэри', 'Пшглавская', 'Брахманович', '$2a$06$ZmJOYeS96R26lH4ACNIa2OihhaqborMuqZqQ17ESuxDa7l0XKhGHm');
+INSERT INTO USERS (ID, EMAIL, FIRST_NAME, LAST_NAME, MIDDLE_NAME, PASSWORD) values (1, 'mary@gmail.com', 'Мэри', 'Пшглавская', 'Брахманович', '$2a$06$ZmJOYeS96R26lH4ACNIa2OihhaqborMuqZqQ17ESuxDa7l0XKhGHm');
 INSERT INTO METHODIST (ID, UNIVERSITY_ID) values (1, 1);
 
-INSERT INTO USERS (ID, EMAIL, FIRST_NAME, LAST_NAME, MIDDLE_NAME, PASSWORD) values (2, 'mega-enrollee@gmail.com', 'Дэвид', 'Брглбджавский', 'Исенеевич', '$2a$06$ZmJOYeS96R26lH4ACNIa2OihhaqborMuqZqQ17ESuxDa7l0XKhGHm');
+INSERT INTO USERS (ID, EMAIL, FIRST_NAME, LAST_NAME, MIDDLE_NAME, PASSWORD) values (2, 'david@gmail.com', 'Дэвид', 'Брглбджавский', 'Исенеевич', '$2a$06$ZmJOYeS96R26lH4ACNIa2OihhaqborMuqZqQ17ESuxDa7l0XKhGHm');
 INSERT INTO ENROLLEE (ID, PASSPORT_ID, PHONE_NUMBER) values (2, '320112001A000PB0', '+375291234567');
+
+INSERT INTO USERS (ID, EMAIL, FIRST_NAME, LAST_NAME, MIDDLE_NAME, PASSWORD) values (3, 'ivan@gmail.com', 'Айвэн', 'Мкртчян', 'Антуанович', '$2a$06$ZmJOYeS96R26lH4ACNIa2OihhaqborMuqZqQ17ESuxDa7l0XKhGHm');
+INSERT INTO ENROLLEE (ID, PASSPORT_ID, PHONE_NUMBER) values (3, '430072001A000PB1', '+375291234567');
