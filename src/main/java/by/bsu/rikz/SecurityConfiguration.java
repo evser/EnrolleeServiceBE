@@ -40,7 +40,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		httpSecurity.authorizeRequests()
 				.antMatchers(HttpMethod.POST, "/enrollees").denyAll()
 				.antMatchers("/login", "/signup").anonymous()
-				.antMatchers("/h2-console/**", "/").permitAll()
+				.antMatchers("/h2-console/**", "/", "/browser/**").permitAll()
 				.antMatchers("/**").authenticated()
 				.and().csrf().disable().headers().frameOptions().disable()
 				.and().formLogin().loginPage("/login").usernameParameter("login")
