@@ -1,6 +1,5 @@
 package by.bsu.rikz.controller;
 
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import by.bsu.rikz.bean.PasswordChangeContext;
 import by.bsu.rikz.bean.SignUpRequestContext;
@@ -27,13 +25,13 @@ public class LoginController {
 	@Autowired
 	private LoginService loginService;
 
-	@GetMapping("/login")
-	public String login(@RequestParam(name = "success", required = false) String success, Authentication auth, HttpSession session) {
-		if (auth == null) {
-			return "forward:/login-form.html";
-		}
-		return "redirect:/";
-	}
+	// @GetMapping("/login")
+	// public String login(@RequestParam(name = "success", required = false) String success, Authentication auth, HttpSession session) {
+	// if (auth == null) {
+	// return "forward:/login-form.html";
+	// }
+	// return "redirect:/";
+	// }
 
 	@GetMapping("/users/current")
 	public ResponseEntity<User> getCurrentUser(Authentication auth) {
