@@ -1,0 +1,104 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300);
+
+body, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #ccc;
+}
+
+header {
+  width: 100%;
+  height: 70px;
+  box-sizing: border-box;
+  background-color: #373948;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  padding: 0px 0px 0px 30px;
+}
+
+header h1 {
+  float: left;
+  margin: 10px 0px;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+}
+
+header nav ul {
+  height: 70px;
+  float: right;
+}
+
+header nav ul li {
+  height: 70px;
+  display: inline-block;
+}
+
+header nav ul li a {
+  height: 30px;
+  display: block;
+  padding: 17px 20px;
+  color: white;
+  font-size: 2.2em;
+  text-decoration: none;
+  border-top: 3px solid #373948;
+  border-bottom: 3px solid #373948;
+  -webkit-transition: color 1s ease;
+  -moz-transition: color 1s ease;
+  -o-transition: color 1s ease;
+  transition: color 1s ease;
+}
+
+header nav ul li a:hover{
+  color: #373948;
+}
+
+header nav ul li a.active{
+  height: 33px;
+  border-bottom: none;
+}
+
+header nav ul li a.link-1 { background-color: #cccccc; }
+header nav ul li a.link-2 { background-color: #5663e6; }
+header nav ul li a.link-3 { background-color: #eac14d; }
+header nav ul li a.link-4 { background-color: #5bd999; }
+header nav ul li a.link-5 { background-color: #d95b62; }
+
+section {
+  width: 100%;
+  height: 800px;
+  box-sizing: border-box;
+  padding: 20px;
+  overflow: hidden;
+}
+
+section#home { background-color: #cccccc; margin-top: 70px;}
+section#about { background-color: #eac14d; }
+section#clients { background-color: #5663e6; }
+section#contact-us { background-color: #5bd999; }
+
+section h2 {
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 3em;
+  margin: 0px;
+}
+
+section p {
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 1em; 
+}
+
+section#home h2, section#home p{
+  color: black;
+}
+
+.nav-menu {
+  margin-right: 3px;
+}
