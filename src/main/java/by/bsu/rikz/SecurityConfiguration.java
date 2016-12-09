@@ -50,6 +50,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 						String header = request.getHeader(HttpHeaders.USER_AGENT);
 						if (header != null && header.contains("Android")) {
 							response.setStatus(HttpServletResponse.SC_OK);
+						} else {
+							response.sendRedirect("/");
 						}
 					}
 				})

@@ -67,10 +67,14 @@ header nav ul li a.active{
   border-bottom: none;
 }
 
+header nav ul li a.add-test, section#add-test { background-color: #88e61c; }
+header nav ul li a.add-result, section#add-result { background-color: #7700ff; }
+header nav ul li a.methodist-settings, section#methodist-settings { background-color: #ffc445; }
+header nav ul li a.logout { background-color: #f54a4a; }
 
-header nav ul li a.greeting, section#greeting { background-color: #ffc445; }
-header nav ul li a.home, section#home { background-color: #20b9ff; }
-header nav ul li a.login { background-color: #88e61c; }
+a.logout {
+  margin: 0px 0px 0px 4px;
+}
 
 section {
   flex: 1;

@@ -1,34 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="css/settings.css"/>
     <meta charset="UTF-8">
     <title>Регистрация на тестирование</title>
     <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.0/build/pure-min.css">
     <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.0/build/grids-responsive-min.css">
+
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
 </head>
 
 <body>
 <header>
-    <h1><a class="index" href="/">Онлайн регистрация на тестирование</a></h1>
+    <h1><a class="index" href="/methodist/add-test.html">Онлайн регистрация на тестирование</a></h1>
     <nav class="nav-menu" role='navigation'>
         <ul>
-            <li><a class="link-home" href="/"><i class="fa fa-newspaper-o" aria-hidden="true"></i></a></li>
-            <li><a class="link-test-register" href="/test-register.html"><i class="fa fa-tasks" aria-hidden="true"></i></a>
-            </li>
-            <li><a class="link-test-results" href="/test-results.html"><i class="fa fa-check-square-o"
-                                                                          aria-hidden="true"></i></a></li>
-            <li><a class="link-settings active" href="/settings.html"><i class="fa fa-user-circle"
-                                                                         aria-hidden="true"></i></a></li>
-            <li><a class="link-logout" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+            <li><a class="add-test" href="/methodist/add-test.html"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></a></li>
+            <li><a class="add-result" href="/methodist/add-result.html"><i class="fa fa-list" aria-hidden="true"></i></a></li>
+            <li><a class="methodist-settings active" href="/methodist/settings.html"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
+            <li><a class="logout" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
         </ul>
     </nav>
 </header>
 
-<section id="settings">
-
+<section id="methodist-settings">
     <div id="content">
         <form class="pure-form pure-form-stacked">
             <fieldset>
@@ -78,30 +73,10 @@
                 <button type="submit" class="pure-button pure-button-primary">Заменить пароль</button>
             </fieldset>
         </form>
-
-
-        <div class="wrapper">
-
-            <div class="table">
-
-                <div class="row header blue">
-                    <div class="cell">Документ</div>
-                    <div class="cell">Статус</div>
-                    <div class="cell">Добавить/Заменить</div>
-                </div>
-
-                <div class="row">
-                    <div class="cell">Паспорт</div>
-                    <div class="cell">+</div>
-                    <div class="cell">КНОПКА</div>
-                </div>
-
-            </div>
-        </div>
     </div>
 </section>
 
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src="js/index.js"></script>
+<script src="js/methodist.js"></script>
 </body>
 </html>
