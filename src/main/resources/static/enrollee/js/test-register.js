@@ -64,7 +64,7 @@ $(document).ready(function () {
             $.each(tests, function (key, value) {
                 testSelect.append($("<option></option>")
                     .attr("value", value.id)
-                    .text(value.date + " (" + value.type + ")"));
+                    .text(new Date(value.date).toLocaleString() + " (" + value.type + ")"));
             });
 
             if (!tests.length) {
