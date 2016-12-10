@@ -67,10 +67,11 @@ header nav ul li a.active{
   border-bottom: none;
 }
 
-
-header nav ul li a.greeting, section#greeting { background-color: #ffc445; }
 header nav ul li a.home, section#home { background-color: #20b9ff; }
-header nav ul li a.login { background-color: #88e61c; }
+header nav ul li a.test-register, section#test-register { background-color: #88e61c; }
+header nav ul li a.test-results, section#test-results { background-color: #7700ff; }
+header nav ul li a.settings, section#settings { background-color: #ffc445; }
+header nav ul li a.logout { background-color: #f54a4a; }
 
 section {
   flex: 1;

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация на тестирование</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.0/build/pure-min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/add-test.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+</head>
+
+<body>
+<header>
+    <h1><a class="index" href="/methodist/add-test.html">Онлайн регистрация на тестирование</a></h1>
+    <nav class="nav-menu" role='navigation'>
+        <ul>
+            <li><a class="add-test active" href="/methodist/add-test.html"><i class="fa fa-calendar-plus-o"
+                                                                              aria-hidden="true"></i></a></li>
+            <li><a class="add-result" href="/methodist/add-result.html"><i class="fa fa-list"
+                                                                           aria-hidden="true"></i></a></li>
+            <li><a class="methodist-settings" href="/methodist/settings.html"><i class="fa fa-user-circle"
+                                                                                 aria-hidden="true"></i></a>
+            <li><a class="logout" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+        </ul>
+    </nav>
+</header>
+
+<section id="add-test">
+    <div id="content">
+        <h2>Добавить тестирование</h2>
+
+        <p>Выберите предмет</p>
+        <select class="soflow">
+        </select>
+
+        <p>Выберите комнату</p>
+        <select class="soflow">
+        </select>
+
+        <p>Выберите дату</p>
+        <select class="soflow">
+        </select>
+
+        <p>Выберите тип тестирования</p>
+        <select class="soflow">
+            <option>РТ</option>
+            <option>ЦТ</option>
+        </select>
+        <p/>
+
+        <button class="pure-button button-submit">Добавить тестирование</button>
+    </div>
+</section>
+
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src="js/methodist.js"></script>
+<script src="../js/common.js"></script>
+</body>
+</html>

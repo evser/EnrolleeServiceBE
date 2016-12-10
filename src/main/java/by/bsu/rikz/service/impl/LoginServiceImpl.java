@@ -1,9 +1,13 @@
 package by.bsu.rikz.service.impl;
 
-import java.util.Optional;
-
-import javax.validation.ValidationException;
-
+import by.bsu.rikz.bean.PasswordChangeContext;
+import by.bsu.rikz.bean.SignUpRequestContext;
+import by.bsu.rikz.entity.Enrollee;
+import by.bsu.rikz.entity.User;
+import by.bsu.rikz.repository.EnrolleeRepository;
+import by.bsu.rikz.repository.MethodistRepository;
+import by.bsu.rikz.repository.UserRepository;
+import by.bsu.rikz.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -15,14 +19,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import by.bsu.rikz.bean.PasswordChangeContext;
-import by.bsu.rikz.bean.SignUpRequestContext;
-import by.bsu.rikz.entity.Enrollee;
-import by.bsu.rikz.entity.User;
-import by.bsu.rikz.repository.EnrolleeRepository;
-import by.bsu.rikz.repository.MethodistRepository;
-import by.bsu.rikz.repository.UserRepository;
-import by.bsu.rikz.service.LoginService;
+import javax.validation.ValidationException;
+import java.util.Optional;
 
 @Service
 public class LoginServiceImpl implements LoginService {
@@ -92,7 +90,7 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public boolean checkUserIdByLogin(Long id, String login) {
 		Optional<User> userOptional = userRepository.findByEmail(login);
-		return userOptional.isPresent() ? userOptional.get().getId().equals(id) : false;
+		return userOptional.isPresent() && userOptional.get().getId().equals(id);
 	}
 
 }
