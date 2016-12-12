@@ -21,9 +21,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
+import by.bsu.rikz.entity.enums.UserRoleEnum;
+
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+	private static final String ENROLLEE_HOME_PAGE = "/enrollee/news.html";
+
+	private static final String METHODIST_HOME_PAGE = "/methodist/add-test.html";
 
 	@Autowired
 	private UserDetailsService userDetailsService;
@@ -51,7 +57,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 						if (header != null && header.contains("Android")) {
 							response.setStatus(HttpServletResponse.SC_OK);
 						} else {
-							response.sendRedirect("/");
+							response.sendRedirect(authentication.getAuthorities().stream()
+									.filter(role -> UserRoleEnum.ENROLLEE.name().equals(role.getAuthority()))
+									.findFirst()
+									.isPresent() ? ENROLLEE_HOME_PAGE : METHODIST_HOME_PAGE);
 						}
 					}
 				})
