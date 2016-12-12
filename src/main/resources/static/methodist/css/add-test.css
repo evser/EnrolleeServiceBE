@@ -29,3 +29,11 @@ div#content {
 .pure-button {
    font-weight: bolder;
 }
+
+#date-picker {
+	height: 20px;
+    width: 300px;
+    text-align: center;
+    font-size: larger;
+    font-family: 'Open Sans', sans-serif;
+}

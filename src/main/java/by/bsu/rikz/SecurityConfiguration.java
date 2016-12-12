@@ -43,6 +43,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.authorizeRequests()
 				.antMatchers("/enrollees/**", "/methodists/**").denyAll()
+				.antMatchers("/methodist/university/currentId").hasAuthority("METHODIST")
 				.antMatchers("/login", "/signup").anonymous()
 				.antMatchers("/h2-console/**", "/", "/browser/**").permitAll()
 				.antMatchers("/**").authenticated()

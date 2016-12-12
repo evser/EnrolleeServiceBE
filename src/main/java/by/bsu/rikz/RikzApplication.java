@@ -10,7 +10,6 @@ import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 @SpringBootApplication
 public class RikzApplication extends RepositoryRestMvcConfiguration {
@@ -30,8 +29,16 @@ public class RikzApplication extends RepositoryRestMvcConfiguration {
 	@Bean
 	public ObjectMapper halObjectMapper() {
 		ObjectMapper halObjectMapper = super.halObjectMapper();
-		halObjectMapper.registerModule(new JavaTimeModule());
+		halObjectMapper.findAndRegisterModules();
 		return halObjectMapper;
+	}
+
+	@Override
+	@Bean
+	public ObjectMapper objectMapper() {
+		ObjectMapper objectMapper = super.objectMapper();
+		objectMapper.findAndRegisterModules();
+		return objectMapper;
 	}
 
 }
