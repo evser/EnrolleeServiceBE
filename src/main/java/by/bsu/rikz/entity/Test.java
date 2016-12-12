@@ -23,11 +23,11 @@ public class Test extends AbstractEntity {
 
 	private String type;
 
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@RestResource(exported = false)
 	private Room room;
 
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@RestResource(exported = false)
 	private Subject subject;
 

@@ -2,6 +2,8 @@ package by.bsu.rikz.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import by.bsu.rikz.bean.TestAddContext;
 import by.bsu.rikz.bean.TestResultContext;
 import by.bsu.rikz.service.TestService;
 
@@ -29,9 +32,13 @@ public class TestController {
 	}
 
 	@PostMapping("/result")
-	public ResponseEntity<?> addTestResults(@RequestBody List<TestResultContext> testResults) {
+	public ResponseEntity<?> addTestResults(@Valid @RequestBody List<TestResultContext> testResults) {
 		testService.addTestResults(testResults);
 		return ResponseEntity.noContent().build();
 	}
 
+	@PostMapping("/")
+	public ResponseEntity<?> addTestResults(@Valid @RequestBody TestAddContext testAddContext) {
+		return testService.addTest(testAddContext) ? ResponseEntity.noContent().build() : ResponseEntity.badRequest().build();
+	}
 }

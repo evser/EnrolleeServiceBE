@@ -30,22 +30,27 @@
 <section id="settings">
 
     <div id="content">
-        <form class="pure-form pure-form-stacked">
+        <form id="change-pswd" class="pure-form pure-form-stacked">
             <fieldset>
                 <legend>Личные данные</legend>
 
                 <div class="pure-g">
-                    <div class="pure-u-1 pure-u-md-1-3">
-                        <label for="first-name">ФИО</label>
-                        <input id="first-name" class="pure-u-23-24" type="text" readonly>
+                    <div class="pure-u-1 pure-u-md-1-4">
+                        <label for="user-name">ФИО</label>
+                        <input id="user-name" class="pure-u-23-24" type="text" readonly>
                     </div>
 
-                    <div class="pure-u-1 pure-u-md-1-3">
-                        <label for="last-name">Паспорт</label>
-                        <input id="last-name" class="pure-u-23-24" type="text" readonly>
+                    <div class="pure-u-1 pure-u-md-1-4">
+                        <label for="passport-num">Паспорт</label>
+                        <input id="passport-num" class="pure-u-23-24" type="text" readonly>
+                    </div>
+                    
+                    <div class="pure-u-1 pure-u-md-1-4">
+                        <label for="phone-num">Номер телефона</label>
+                        <input id="phone-num" class="pure-u-23-24" type="text" readonly>
                     </div>
 
-                    <div class="pure-u-1 pure-u-md-1-3">
+                    <div class="pure-u-1 pure-u-md-1-4">
                         <label for="email">Электронная почта</label>
                         <input id="email" class="pure-u-23-24" type="email" readonly>
                     </div>
@@ -54,21 +59,21 @@
 
                     <div class="pure-u-1 pure-u-md-1-3">
                         <label for="old-pass">Старый пароль</label>
-                        <input id="old-pass" class="pure-u-23-24" type="password" required>
+                        <input id="old-pass" class="pure-u-23-24" type="password" minlength="5" required>
                     </div>
 
                     <div class="pure-u-1 pure-u-md-2-3"></div>
 
                     <div class="pure-u-1 pure-u-md-1-3">
                         <label for="new-pass">Новый пароль</label>
-                        <input id="new-pass" class="pure-u-23-24" type="password" required>
+                        <input id="new-pass" class="pure-u-23-24" type="password" minlength="5" required>
                     </div>
 
                     <div class="pure-u-1 pure-u-md-2-3"></div>
 
                     <div class="pure-u-1 pure-u-md-1-3">
                         <label for="new-pass-again">Повторить пароль</label>
-                        <input id="new-pass-again" class="pure-u-23-24" type="password" required>
+                        <input id="new-pass-again" class="pure-u-23-24" type="password" minlength="5"  required>
                     </div>
 
                 </div>
@@ -103,6 +108,7 @@
 
 <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src="js/enrollee.js"></script>
+<script src="../js/settings.js"></script>
 <script src="../js/common.js"></script>
 </body>
 </html>

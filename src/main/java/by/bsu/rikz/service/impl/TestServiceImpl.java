@@ -11,11 +11,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import by.bsu.rikz.bean.TestAddContext;
 import by.bsu.rikz.bean.TestResultContext;
 import by.bsu.rikz.entity.Enrollee;
 import by.bsu.rikz.entity.Test;
 import by.bsu.rikz.entity.TestAssignment;
 import by.bsu.rikz.repository.EnrolleeRepository;
+import by.bsu.rikz.repository.RoomRepository;
+import by.bsu.rikz.repository.SubjectRepository;
 import by.bsu.rikz.repository.TestAssignmentRepository;
 import by.bsu.rikz.repository.TestRepository;
 import by.bsu.rikz.service.TestService;
@@ -31,6 +34,12 @@ public class TestServiceImpl implements TestService {
 
 	@Autowired
 	private TestRepository testRepository;
+
+	@Autowired
+	private SubjectRepository subjectRepository;
+
+	@Autowired
+	private RoomRepository roomRepository;
 
 	@Override
 	@PreAuthorize("hasRole('ENROLLEE')")
@@ -61,6 +70,21 @@ public class TestServiceImpl implements TestService {
 					.orElseThrow(() -> new ValidationException("Test assignment not found: " + testResult.getTestAssignmentId()));
 			testAssignment.setPoints(testResult.getPoints());
 		});
+	}
+
+	@Override
+	@Transactional
+	public boolean addTest(TestAddContext testAddContext) {
+		Test existingTest = testRepository.findFirstByRoomIdAndDate(testAddContext.getRoomId(), testAddContext.getDate());
+		if (existingTest != null) {
+			return false;
+		}
+		Test test = new Test();
+		test.setRoom(roomRepository.findOne(testAddContext.getRoomId()));
+		test.setSubject(subjectRepository.findOne(testAddContext.getSubjectId()));
+		test.setDate(testAddContext.getDate());
+		testRepository.save(test);
+		return true;
 	}
 
 }

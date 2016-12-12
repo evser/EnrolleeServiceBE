@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -38,6 +39,7 @@ public class LoginController {
 		return ResponseEntity.ok(loginService.getCurrentUser(auth));
 	}
 
+	@PutMapping("/users")
 	@PatchMapping("/users")
 	public ResponseEntity<?> changePassword(@RequestBody PasswordChangeContext passwordChangeContext, Authentication auth) {
 		if (loginService.changePassword(passwordChangeContext, auth)) {
