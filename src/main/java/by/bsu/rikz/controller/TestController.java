@@ -37,7 +37,7 @@ public class TestController {
 		return ResponseEntity.noContent().build();
 	}
 
-	@PostMapping("/")
+	@PostMapping("/add")
 	public ResponseEntity<?> addTestResults(@Valid @RequestBody TestAddContext testAddContext) {
 		return testService.addTest(testAddContext) ? ResponseEntity.noContent().build() : ResponseEntity.badRequest().build();
 	}

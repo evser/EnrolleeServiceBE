@@ -83,6 +83,7 @@ public class TestServiceImpl implements TestService {
 		test.setRoom(roomRepository.findOne(testAddContext.getRoomId()));
 		test.setSubject(subjectRepository.findOne(testAddContext.getSubjectId()));
 		test.setDate(testAddContext.getDate());
+		test.setType(testAddContext.getType());
 		testRepository.save(test);
 		return true;
 	}

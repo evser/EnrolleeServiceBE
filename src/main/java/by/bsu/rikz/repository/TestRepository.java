@@ -20,4 +20,8 @@ public interface TestRepository extends JpaRepository<Test, Long> {
 	List<Test> findByRoomUniversityIdAndSubjectId(@Param("universityId") Long universityId, @Param("subjectId") Long subjectId);
 
 	Test findFirstByRoomIdAndDate(@Param("roomId") Long roomId, @Param("date") LocalDateTime date);
+
+	@Override
+	@RestResource(exported = false)
+	<S extends Test> S save(S test);
 }
