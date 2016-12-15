@@ -46,6 +46,25 @@ width: 95%;
   }
 }
 
+.blue-button {
+  background: #7fbdff;
+}
+
+p.no-enrollee-msg {
+  text-align: center;
+}
+
+input{
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 3px #ddd;
+  border-radius: 4px;
+}
+
+input:invalid{
+  color: #b94a48;
+  border-color: #e9322d;
+}
+
 .cell {
   padding: 6px 12px;
   display: table-cell;

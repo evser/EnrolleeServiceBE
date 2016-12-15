@@ -20,6 +20,7 @@ public class TestAssignment extends AbstractEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "enrollee_id")
+	@RestResource(exported = false)
 	private Enrollee enrollee;
 
 	@ManyToOne

@@ -64,3 +64,7 @@ legend {
         display: block;
     }
 }
+
+i.doc-indicator {
+    font-size: larger !important;
+}

@@ -45,7 +45,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/enrollees/**", "/methodists/**").denyAll()
 				.antMatchers("/methodist/university/currentId").hasAuthority("METHODIST")
 				.antMatchers("/login", "/signup").anonymous()
-				.antMatchers("/h2-console/**", "/", "/browser/**").permitAll()
+				.antMatchers("/h2-console/**", "/", "/home.html", "/browser/**").permitAll()
 				.antMatchers("/**").authenticated()
 				.and().csrf().disable().headers().frameOptions().disable()
 				.and().formLogin().usernameParameter("login")

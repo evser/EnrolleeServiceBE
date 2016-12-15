@@ -28,4 +28,5 @@ $(document).ready(function () {
     	$("#old-pass").val('');
     	return false;
     });
+
 });
