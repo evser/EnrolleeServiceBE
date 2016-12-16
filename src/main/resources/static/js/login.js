@@ -1,7 +1,6 @@
 $(document).ready(function () {
 
     function checkAutoCompleteInput() {
-        console.log("!!");
         var formInputs = $('.form').find('input, textarea');
 
         $.each(formInputs, function (idx, input) {
