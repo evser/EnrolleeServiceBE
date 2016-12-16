@@ -1,14 +1,13 @@
 package by.bsu.rikz.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.data.rest.core.annotation.RestResource;
+
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import org.springframework.data.rest.core.annotation.RestResource;
-
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 @Table(name = "test_assignment")

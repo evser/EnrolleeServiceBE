@@ -5,7 +5,7 @@ $(document).ready(function () {
         $.get("/testAssignments/search/findByEnrolleeId?enrolleeId=" + userId, function (data) {
             var resultTable = $("#result-table");
 
-            var testAssignments = data._embedded.testAssignments;
+            var testAssignments = data.embedded.testAssignments;
             testAssignments.sort(function (a, b) {
                 return new Date(a.test.date) - new Date(b.test.date);
             });

@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.get("/universities", function (data) {
-        $.each(data._embedded.universities, function (key, value) {
+        $.each(data.embedded.universities, function (key, value) {
             $('#university-select').append($('<option></option>')
                 .attr("value", value.id)
                 .text(value.name + " (" + value.address + ")"));
@@ -38,7 +38,7 @@ $(document).ready(function () {
 
         $.get("/subjects/search/findByUniversityId?universityId=" + selectedUniversity[0].value, function (data) {
             selectedSubject.empty();
-            $.each(data._embedded.subjects, function (key, value) {
+            $.each(data.embedded.subjects, function (key, value) {
                 selectedSubject.append($("<option></option>")
                     .attr("value", value.id)
                     .text(value.name + " (" + value.code + ")"));
@@ -60,7 +60,7 @@ $(document).ready(function () {
             testSelect.prop('disabled', false);
             submitButton.prop('disabled', false);
 
-            var tests = data._embedded.tests;
+            var tests = data.embedded.tests;
             $.each(tests, function (key, value) {
                 testSelect.append($("<option></option>")
                     .attr("value", value.id)
