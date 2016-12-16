@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 
 import org.springframework.data.rest.core.annotation.RestResource;
 
@@ -16,6 +17,7 @@ import lombok.Setter;
 @Setter
 public class TestAssignment extends AbstractEntity {
 
+	@Min(0)
 	private Integer points;
 
 	@ManyToOne

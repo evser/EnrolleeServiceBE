@@ -44,11 +44,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		httpSecurity.authorizeRequests()
 				.antMatchers("/enrollees/**", "/methodists/**").denyAll()
 				.antMatchers("/methodist/university/currentId").hasAuthority("METHODIST")
-				.antMatchers("/login", "/signup").anonymous()
+				.antMatchers("/login-form.html", "/signup").anonymous()
 				.antMatchers("/h2-console/**", "/", "/home.html", "/browser/**").permitAll()
 				.antMatchers("/**").authenticated()
 				.and().csrf().disable().headers().frameOptions().disable()
-				.and().formLogin().usernameParameter("login")
+				.and().formLogin().loginPage("/login-form.html").loginProcessingUrl("/login").usernameParameter("login")
 				.successHandler(new SimpleUrlAuthenticationSuccessHandler() {
 
 					@Override
