@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 
 @Entity
 @Table(name = "test_assignment")
@@ -15,6 +16,7 @@ import javax.persistence.Table;
 @Setter
 public class TestAssignment extends AbstractEntity {
 
+	@Min(0)
 	private Integer points;
 
 	@ManyToOne
