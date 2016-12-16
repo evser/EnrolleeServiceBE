@@ -7,7 +7,7 @@ $(document).ready(function () {
 
         $.get("/subjects/search/findByUniversityId?universityId=" + universityId, function (data) {
             selectSubject.empty();
-            $.each(data._embedded.subjects, function (key, value) {
+            $.each(data.embedded.subjects, function (key, value) {
                 selectSubject.append($("<option></option>")
                     .attr("value", value.id)
                     .text(value.name + " (" + value.code + ")"));
@@ -55,7 +55,7 @@ $(document).ready(function () {
 
                 $.get("/tests/search/findByUniversityIdAndSubjectId?universityId=" + universityId + "&subjectId="
                     + selectSubject.find("option:selected").val(), function (testData) {
-                    var tests = testData._embedded.tests;
+                    var tests = testData.embedded.tests;
                     var testDates = [];
                     for (var idx in tests) {
                         var testDate = tests[idx].date;
@@ -82,7 +82,7 @@ $(document).ready(function () {
                 $.get("/testAssignments/search/findByUniversityIdAndSubjectId?universityId=" + universityId + "&subjectId="
                     + selectSubject.find("option:selected").val(), function (testAssignmentsData) {
 
-                    var testAssignments = testAssignmentsData._embedded.testAssignments;
+                    var testAssignments = testAssignmentsData.embedded.testAssignments;
                     var selectedDate = $('#date-select').find("option:selected").val();
 
                     testAssignments = testAssignments.filter(function (testAssignment) {

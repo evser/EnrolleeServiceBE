@@ -7,7 +7,7 @@ $(document).ready(function () {
         var selectSubject = $('#subject-select');
         $.get("/subjects/search/findByUniversityId?universityId=" + universityId, function (data) {
             selectSubject.empty();
-            $.each(data._embedded.subjects, function (key, value) {
+            $.each(data.embedded.subjects, function (key, value) {
                 selectSubject.append($("<option></option>")
                     .attr("value", value.id)
                     .text(value.name + " (" + value.code + ")"));
@@ -19,7 +19,7 @@ $(document).ready(function () {
         $.get("/rooms/search/findByUniversityId?universityId=" + universityId, function (data) {
 
             selectRoom.empty();
-            $.each(data._embedded.rooms, function (key, value) {
+            $.each(data.embedded.rooms, function (key, value) {
                 selectRoom.append($("<option></option>")
                     .attr("value", value.id)
                     .text(value.number));

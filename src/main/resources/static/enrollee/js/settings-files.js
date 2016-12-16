@@ -3,7 +3,7 @@ $(document).ready(function () {
         var userId = user.id;
 
         $.get("/documents/search/findByEnrolleeId?enrolleeId=" + userId, function (data) {
-            setHasDocuments(data._embedded.documents.length);
+            setHasDocuments(data.embedded.documents.length);
         });
 
 
