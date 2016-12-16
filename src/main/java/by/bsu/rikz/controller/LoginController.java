@@ -49,7 +49,7 @@ public class LoginController {
 		return ResponseEntity.ok().build();
 	}
 
-	@PostMapping("/signup")
+	@PostMapping(path = "/signup")
 	public ResponseEntity<?> signUp(@Valid @RequestBody SignUpRequestContext signUpRequestContext) {
 		loginService.signUp(signUpRequestContext);
 		return ResponseEntity.ok().build();
